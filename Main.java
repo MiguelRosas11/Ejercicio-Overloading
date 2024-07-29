@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Date;
 
 
 public class Main{
@@ -49,7 +50,7 @@ public class Main{
 
 
                 int local = 0;
-                while (local<1) {
+                while(local<1) {
                     System.out.println("Ingrese la localidad en la que desea comprar lugares:");
                     System.out.println("Ingrese 1 si desea la localidad");
                     System.out.println("Ingrese 2 si desea la localidad");
@@ -83,7 +84,6 @@ public class Main{
                                 L1.setCapacidad(L1.getCapacidad() - x.getCantidad());
                             }
                         }
-                        local = local +1;
 
                     }
 
@@ -114,7 +114,6 @@ public class Main{
                                 L2.setCapacidad(L2.getCapacidad() - x.getCantidad());
                             }
                         }
-                        local = local +1;
 
                     }
 
@@ -143,17 +142,20 @@ public class Main{
                                 System.out.println("Su cambio es de: " + cambio);
                                 dinero.setTotal(dinero.getTotal() + precio_total);
                                 L3.setCapacidad(L3.getCapacidad() - x.getCantidad());
+
                             }
                         }
-                        local = local +1;
+
+                        local = local + 1;
 
                     }
                     else {
                         System.out.println("Opción no válida");
-
                     }
-                    //Aquí se generará el ticket
+
                 }
+                Date fecha = new Date();
+                System.out.println(fecha);
 
             }
 
@@ -166,9 +168,7 @@ public class Main{
             {
                 System.out.println("Gracias por utilizar el programa.");
                 menu = menu + 1;
-            }
-
-            else{
+            } else{
                 System.out.println("Opción no válida");
             }
 
