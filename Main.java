@@ -1,9 +1,12 @@
 import java.util.Scanner;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 
 public class Main{
-
+    public static SimpleDateFormat dd = new SimpleDateFormat("dd");
+    public static SimpleDateFormat yyyy= new SimpleDateFormat("yyyy");
+    public static SimpleDateFormat mm = new SimpleDateFormat("MM");
     public static void main(String[] args)
     {
         Scanner sc = new Scanner(System.in);
@@ -16,6 +19,13 @@ public class Main{
         Localidad L1 = new Localidad("lejana", 100, 250);
         Localidad L2 = new Localidad("media", 100, 575);
         Localidad L3 = new Localidad("cercana", 100, 1720);
+
+        Date fecha = new Date();
+        String dia = dd.format(fecha);
+        String year = yyyy.format(fecha);
+        String mes = mm.format(fecha);
+        System.out.println(dia + year + mes);
+
 
         int menu = 0;
         while(menu<1)
@@ -36,6 +46,7 @@ public class Main{
                 System.out.println("Ingrese su número de teléfeno");
 
                 int telefono = sc.nextInt();
+
 
                 System.out.println("Ingrese su presupuesto");
 
@@ -72,7 +83,12 @@ public class Main{
                             }
 
 
-                        } else {
+                        } else if (L1.getCapacidad() == 0)
+                        {
+                            System.out.println("Los tickets de esta localidad están agotados.");
+                            local = local + 1;
+                        }
+                        else {
                             int precio_total = (L1.getCapacidad() * L1.getPrecio());
 
                             if (x.getPresupuesto() < precio_total) {
@@ -84,16 +100,18 @@ public class Main{
                                 L1.setCapacidad(L1.getCapacidad() - x.getCantidad());
                             }
                         }
+                        local = local + 1;
+
 
                     }
 
-                    if (loc == 2) {
+                    else if (loc == 2) {
                         if (L2.getCapacidad() >= x.getCantidad()) {
 
                             int precio_total = (x.getCantidad() * L2.getPrecio());
 
                             if (x.getPresupuesto() < precio_total) {
-                                System.out.println("Su presupuesto no es suficiente para comprar esta cantidad de tickets");
+                                System.out.println("Su presupuesto no es suficiente para comprar esta cantidad de tickets"); return;
                             } else {
                                 int cambio = (x.getPresupuesto() - precio_total);
                                 System.out.println("Su cambio es de: " + cambio);
@@ -102,11 +120,17 @@ public class Main{
                             }
 
 
-                        } else {
+                        }
+                        else if (L2.getCapacidad() == 0)
+                        {
+                            System.out.println("Los tickets de esta localidad están agotados."); return;
+                        }
+
+                        else {
                             int precio_total = (L2.getCapacidad() * L2.getPrecio());
 
                             if (x.getPresupuesto() < precio_total) {
-                                System.out.println("Su presupuesto no es suficiente para comprar esta cantidad de tickets");
+                                System.out.println("Su presupuesto no es suficiente para comprar esta cantidad de tickets"); return;
                             } else {
                                 int cambio = (x.getPresupuesto() - precio_total);
                                 System.out.println("Su cambio es de: " + cambio);
@@ -114,16 +138,18 @@ public class Main{
                                 L2.setCapacidad(L2.getCapacidad() - x.getCantidad());
                             }
                         }
+                        local = local + 1;
+
 
                     }
 
-                    if (loc == 3) {
+                    else if (loc == 3) {
                         if (L3.getCapacidad() >= x.getCantidad()) {
 
                             int precio_total = (x.getCantidad() * L3.getPrecio());
 
                             if (x.getPresupuesto() < precio_total) {
-                                System.out.println("Su presupuesto no es suficiente para comprar esta cantidad de tickets");
+                                System.out.println("Su presupuesto no es suficiente para comprar esta cantidad de tickets"); return;
                             } else {
                                 int cambio = (x.getPresupuesto() - precio_total);
                                 System.out.println("Su cambio es de: " + cambio);
@@ -131,12 +157,16 @@ public class Main{
                                 L3.setCapacidad(L3.getCapacidad() - x.getCantidad());
                             }
 
-
-                        } else {
+                        }
+                        else if (L3.getCapacidad() == 0)
+                        {
+                            System.out.println("Los tickets de esta localidad están agotados."); return;
+                        }
+                        else {
                             int precio_total = (L3.getCapacidad() * L3.getPrecio());
 
                             if (x.getPresupuesto() < precio_total) {
-                                System.out.println("Su presupuesto no es suficiente para comprar esta cantidad de tickets");
+                                System.out.println("Su presupuesto no es suficiente para comprar esta cantidad de tickets"); return;
                             } else {
                                 int cambio = (x.getPresupuesto() - precio_total);
                                 System.out.println("Su cambio es de: " + cambio);
@@ -149,22 +179,26 @@ public class Main{
                         local = local + 1;
 
                     }
+                    else if (loc == 4){
+                        System.out.println("Regresando al menú principal");
+                        local = local + 1;
+                    }
                     else {
                         System.out.println("Opción no válida");
                     }
 
                 }
-                Date fecha = new Date();
-                System.out.println(fecha);
+
+                System.out.println(dia + year + mes + numero);
 
             }
 
-            if (opc == 2)
+            else if (opc == 2)
             {
-                System.out.println("El dinero total en caja es de" + dinero.getTotal());
+                System.out.println("El dinero total en caja es de: " + dinero.getTotal());
 
             }
-            if (opc == 3)
+            else if (opc == 3)
             {
                 System.out.println("Gracias por utilizar el programa.");
                 menu = menu + 1;
