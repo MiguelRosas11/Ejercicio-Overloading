@@ -24,7 +24,6 @@ public class Main{
         String dia = dd.format(fecha);
         String year = yyyy.format(fecha);
         String mes = mm.format(fecha);
-        System.out.println(dia + year + mes);
 
 
         int menu = 0;
@@ -63,9 +62,9 @@ public class Main{
                 int local = 0;
                 while(local<1) {
                     System.out.println("Ingrese la localidad en la que desea comprar lugares:");
-                    System.out.println("Ingrese 1 si desea la localidad");
-                    System.out.println("Ingrese 2 si desea la localidad");
-                    System.out.println("Ingrese 3 si desea la localidad");
+                    System.out.println("Ingrese 1 si desea la localidad L1");
+                    System.out.println("Ingrese 2 si desea la localidad L2");
+                    System.out.println("Ingrese 3 si desea la localidad L3");
                     int loc = sc.nextInt();
                     if (loc == 1) {
 
@@ -76,7 +75,8 @@ public class Main{
                             if (x.getPresupuesto() < precio_total) {
                                 System.out.println("Su presupuesto no es suficiente para comprar esta cantidad de tickets");
                             } else {
-                                int cambio = (x.getPresupuesto() - precio_total);
+                                int cambio = (x
+                                        .getPresupuesto() - precio_total);
                                 System.out.println("Su cambio es de: " + cambio);
                                 dinero.setTotal(dinero.getTotal() + precio_total);
                                 L1.setCapacidad(L1.getCapacidad() - x.getCantidad());
